@@ -1,0 +1,80 @@
+﻿@model DomaciM3T1.Models.Salon
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Salon</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PIB)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PIB)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Drzava)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Drzava)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Grad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Grad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Adresa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Adresa)
+        </dd>
+    </dl>
+</div>
+<div>
+    <h3>Proizvodjaci automobila po ugovoru sa salonom:</h3>
+    @if (Model.Proizvodjacs != null && Model.Proizvodjacs.Count > 0)
+    {
+            <ul>
+            @foreach (var proizvodjac in Model.Proizvodjacs)
+            {
+                            <li>@proizvodjac.Naziv</li>
+            }
+            </ul>
+    }
+    else
+    {
+            <p>No automobili found.</p>
+    }
+</div>
+<div>
+    <h3>Modeli automobila u salonu:</h3>
+    @if (Model.Automobils != null && Model.Automobils.Count > 0)
+    {
+            <ul>
+            @foreach (var automobil in Model.Automobils)
+            {
+                            <li>@automobil.Model</li>
+            }
+            </ul>
+    }
+    else
+    {
+            <p>No automobili found.</p>
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
